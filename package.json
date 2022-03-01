@@ -5,16 +5,27 @@
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "create-entities-index": "ts-node --pretty --project=tools/tsconfig.tools.json tools/create-entities-index.ts",
+    "ts-node": "./node_modules/.bin/ts-node",
+    "mmt-api:ts-node": "yarn ts-node --project=apps/mmt-api/tsconfig.app.json",
+    "mmt-api:typeorm": "yarn mmt-api:ts-node ./node_modules/.bin/typeorm --config apps/mmt-api/src/ormconfig.ts",
+    "mmt-api:migrate:generate": "yarn mmt-api:typeorm migration:generate -n",
+    "mmt-api:migrate:run": "yarn mmt-api:typeorm migration:run",
+    "mmt-api:migrate:revert": ".yarn mmt-api:typeorm migration:revert"
   },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^8.0.0",
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/typeorm": "^8.0.3",
+    "fast-glob": "^3.2.11",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.0.0",
-    "tslib": "^2.0.0"
+    "sqlite3": "^5.0.2",
+    "tslib": "^2.0.0",
+    "typeorm": "^0.2.44"
   },
   "devDependencies": {
     "@nestjs/schematics": "^8.0.0",
