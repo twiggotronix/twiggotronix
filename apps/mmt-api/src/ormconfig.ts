@@ -5,8 +5,7 @@ const ormconfig: TypeOrmModuleOptions = {
   type: 'sqlite',
   database: './db.sqlite',
   entities: Object.values(entities),
-  migrations: ['apps/mmt-api/src/database/migration/**/*.ts'],
-  synchronize: true,
+  migrations: ['apps/mmt-api/src/database/migration/*.js'],
   logging: 'all',
   cli: {
     migrationsDir: "apps/mmt-api/src/database/migration/"
